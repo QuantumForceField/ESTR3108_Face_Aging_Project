@@ -9,7 +9,7 @@ All source code we used to train the neural network is placed inside [SourceCode
 ***
 
 # Table of Contents
-- [Objectives](Objectives)
+- [Objectives](#Objectives)
 - [Dataset](#dataset)
 - [Pre-Processing](#preprocessing)
 - [Network Architecture](#architecture)
