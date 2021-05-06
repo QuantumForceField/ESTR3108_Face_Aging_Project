@@ -10,14 +10,14 @@ All source code we used to train the neural network is placed inside [SourceCode
 
 # Table of Contents
 - [Objectives](#Objectives)
-- [Dataset](#dataset)
-- [Pre-Processing](#preprocessing)
-- [Network Architecture](#architecture)
-    - [Generator](#generator)
-    - [Age Discriminator](#agediscriminator)
-- [Training](#training)
-- [Results](#results)
-- [References](#references)
+- [Dataset](#Dataset)
+- [Pre-Processing](#Pre-processing)
+- [Network Architecture](#Architecture)
+    - [Generator](#Generator)
+    - [Age Discriminator](#Agediscriminator)
+- [Training](#Training)
+- [Results](#Results)
+- [References](#References)
 
 ***
 
@@ -28,14 +28,14 @@ In this project, our basic goal is to design a model that could accept an image 
 
 ***
 
-## Dataset {#dataset}
+## Dataset
 ![](https://susanqq.github.io/UTKFace/icon/logoWall2.jpg)
 
 For this project, we used the [**UTKFace**](https://susanqq.github.io/UTKFace/) dataset set as our training data. The UTKFace dataset consists of over 20,000 face images paired with age, gender and ethnicity labels. The age span of the dataset is between 1 year old to 116 years old. Ethnicity is grouped into 5 groups, namely White, Black, Asian, Indian, and Others. The dataset also provided aligned and copped images which have size of 200\times200. We used these aligned and copped images for our project, and we further resized them to 128*128 for simplicity. 
 
 ***
 
-## Pre-Processing {#preprocessing}
+## Pre-Processing
 |UTKFace Data Distribution|
 |:---:|
 |![3D Distribution of UTKFace](./Images/UTKFaceDistribution3D.png)|
@@ -58,11 +58,11 @@ This also enhanced our training process of the neural network as images are rela
 
 ***
 
-## Network Architecture {#architecture}
+## Network Architecture
 Our neural network model is mainly taken from [**Face Aging with Contextual Generative Adversarial Nets**](https://arxiv.org/abs/1802.00237) with some modifications. Instead of using 2 discriminative networks as proposed in the original paper, we used only 1 discriminative network to achieved the face translation ability.
 
 
-### Generator {#generator}
+### Generator
 Our generator design is taken from the paper Face Aging with Contextual Generative Adversarial Network as shown in this figure.
 
 ![Generator structure, image taken from https://arxiv.org/abs/1802.00237](./Images/generator_taken_from_FaceAgingWithContextualGAN.png)
@@ -70,7 +70,7 @@ Our generator design is taken from the paper Face Aging with Contextual Generati
 
 The design consists of several layers of repeated structure, each consists of several layers of convolution layer followed by a **LeakyReLU** activation layer and a batch normalization layer. **k**, **n**, **s** represents **kernel size**, **number of kernels**, and **strides** respectively. The generator design also consists of several skip connections. These skip connections later proved to be very effective on preserving personal identity. The generator takes as input an image **x**, and an one hot vector **y** which encodes the age group we want the generator to translate the image into. The generator then produces a generated image **x'**. We can represent the process of generating images as **x'**=**G(x, y)** which **G** is the generator. In our implementation, both input image **x** and generated image **x'** are 3 channel face image with size 128*128. The one hot vector **y** is a 10 dimensional vector, which represents an age group as above.
 
-### Age Discriminator {#agediscriminator}
+### Age Discriminator
 Our age discriminator is also based on the architecture described in the paper Face Aging with Contextual Generative adversarial network.
 
 ![Generator structure, image taken from https://arxiv.org/abs/1802.00237](./Images/ageDiscriminator_taken_from_FaceAgingWithContextualGAN.png)
@@ -80,12 +80,12 @@ As shown in the above figure, the network is made up with several layers of repe
 
 ***
 
-## Training {#training}
+## Training
 Our model was trained on CUHK Central Research Computing Cluster with Nvidia Titan X GPU. The model was trained for 16 hours with batch size 50, which can sit inside a 12GB graphics card memory. When training age discriminator, we used categorical cross-entropy as it’s loss function. To train the generator, we used categorical cross-entropy as the loss function for the generative adversarial network.
 
 ***
 
-## Results {#results}
+## Results
 ![Training Result](./ResultSample/finalResult_with_boxs_shorter.jpg)
 
 The result is shown in the above figure. For images in the red box, those results are not very favourable. For images in green box, the results are better.
@@ -100,7 +100,7 @@ We can conclude that the neural network performs better for translation that pro
 
 ***
 
-## References {#references}
+## References
 
 - B. Tiddeman, M. Burt and D. Perrett, "Prototyping and transforming facial textures for perception research," in IEEE Computer Graphics and Applications, vol. 21, no. 5, pp. 42-50, July-Aug. 2001, doi: 10.1109/38.946630.
 
