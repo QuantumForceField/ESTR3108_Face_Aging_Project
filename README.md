@@ -9,7 +9,7 @@ All source code we used to train the neural network is placed inside [SourceCode
 ***
 
 # Table of Contents
-- [Objectives](#objectives)
+- [Objectives](Objectives)
 - [Dataset](#dataset)
 - [Pre-Processing](#preprocessing)
 - [Network Architecture](#architecture)
@@ -23,7 +23,7 @@ All source code we used to train the neural network is placed inside [SourceCode
 
 ***
 
-## Objectives {#objectives}
+## Objectives
 In this project, our basic goal is to design a model that could accept an image of the user and an age group chosen by him/her, then our model will generate an aging face of the user with a consistent age group. We want our generated image not only to be a random person with a consistent age group, but also preserve the identity of the inputted image, i.e. from the input image and the generated image, we are able to tell that they are the same person. For further improvement, we hope our model can deal with some manually modified features to the inputted image, such as give a pair of glasses to that person, adding a tattoo etc. so that we could predict the aging face of the same person with various features.
 
 ***
